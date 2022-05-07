@@ -1,0 +1,49 @@
+{
+    "language": {
+        "title": "language",
+        "vi": "Vietnamese",
+        "en": "English"
+    },
+    "header": {
+        "login": "Login/Sign up",
+        "create_event": "Create event",
+        "manager_user": "Manager User",
+        "profile": "Profile",
+        "logout": "Logout",
+        "search_placeholder": "Enter to search"
+    },
+    "footer": {
+        "hotline": "Hotline",
+        "time_work": "Ho Chi Minh: Monday - Friday (8:30 AM - 6:30 PM)",
+        "hotline_number": "1900.9999",
+        "support_mail": "Support Mail",
+        "mail": "support@ticketing.com",
+        "help": "How Do We Help",
+        "help_sub": "Easy, Convenient and Secured",
+        "customer_care": "Customer care and support",
+        "address": "17A Cong Hoa, Ward 4, Tan Binh District, Ho Chi Minh City",
+        "booking_instruction": "Booking Instruction",
+        "booking_instruction_note": "Only with a few simple steps",
+        "our_company": "Our Company",
+        "about_us": "About Us",
+        "landscape": "Event Landscape Booklet",
+        "hiring": "We are hiring",
+        "ecom": "E-commerce marketplace regulation",
+        "policy": "Dispute Resolution Policy",
+        "faq": "FAQ",
+        "faq_sub": "Frequently Asked Questions",
+        "subscribe": "Subscribe",
+        "your_mail": "Your email",
+        "app": "Ticketing Application",
+        "available": "AVAILABLE ON",
+        "appstore": "App store",
+        "available_app": "AVAILABLE APP ON",
+        "google_play": "Google play",
+        "app_checkin": "Check-in Application",
+        "desktop": "DESKTOP APP",
+        "multi_platform": "Multi platform",
+        "mobile": "MOBILE APP",
+        "mobile_sub": "Android and iOS",
+        "follow_us": "Follow us"
+    }
+}

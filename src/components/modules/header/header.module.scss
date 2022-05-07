@@ -1,0 +1,14 @@
+@import "@styles/_variables";
+
+.headerWrapper {
+    width: 100%;
+    background-color: $neutral-2;
+
+    .headerLogo {
+        width: rem(150);
+    }
+
+    .headerSearch {
+        width: rem(300);
+    }
+}

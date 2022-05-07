@@ -1,0 +1,232 @@
+@use "sass:math";
+
+// CSS CALCULATE UNIT MIXINS
+@function rem($px, $base: $font_size_rem) {
+    @if (unitless($px)) {
+        $px: $px * 1px;
+    }
+
+    @if (unitless($base)) {
+        $base: $base * 1px;
+    }
+
+    @return math.div($px, $base) * 1rem;
+}
+
+@function em($px, $base: 16px) {
+    @if (unitless($px)) {
+        $px: $px * 1px;
+    }
+
+    @if (unitless($base)) {
+        $base: $base * 1px;
+    }
+    @return math.div($px, $base) * 1em;
+}
+
+@function vh($px, $base: 1080px) {
+    @return math.div($px, $base) * 100vh;
+}
+
+@function vw($px, $base: 1920px) {
+    @return math.div($px, $base) * 100vw;
+}
+
+@mixin w-from-to($from, $to) {
+    @media screen and (min-width: $from) and (max-width: $to) {
+        @content;
+    }
+}
+
+@mixin w-min($to) {
+    @media screen and (min-width: $to) {
+        @content;
+    }
+}
+
+@mixin w-max($to) {
+    @media screen and (max-width: $to) {
+        @content;
+    }
+}
+
+@function px($val) {
+    @return $val * 1px;
+}
+
+@function fcLineHeight($line, $font_size) {
+    @return $line/$font_size;
+}
+
+@mixin lineHeight($line, $font_size) {
+    line-height: fcLineHeight($line, $font_size);
+}
+
+@mixin bg-classes($name, $color) {
+    .bg-#{$name} {
+        background: $color;
+    }
+}
+
+@mixin color-classes($name, $color) {
+    .color-#{$name} {
+        color: $color;
+    }
+}
+
+@mixin fill-classes($name, $color) {
+    .fill-#{$name} {
+        fill: $color;
+    }
+}
+
+@mixin stroke-classes($name, $color) {
+    .stroke-#{$name} {
+        stroke: $color;
+    }
+}
+
+@mixin classes-ultils($colors) {
+    @each $key, $color in $colors {
+        @include color-classes($key, $color);
+        @include bg-classes($key, $color);
+        @include fill-classes($key, $color);
+        @include stroke-classes($key, $color);
+    }
+}
+
+// MEDIA QUERIES
+@mixin min-xs {
+    @media (min-width: #{$screen-xs}) {
+        @content;
+    }
+}
+
+@mixin max-xs {
+    @media (max-width: #{$screen-xs - 1px}) {
+        @content;
+    }
+}
+
+@mixin min-sm {
+    @media (min-width: #{$screen-sm}) {
+        @content;
+    }
+}
+
+@mixin max-sm {
+    @media (max-width: #{$screen-sm - 1px}) {
+        @content;
+    }
+}
+
+@mixin max-md {
+    @media (max-width: #{$screen-md - 1px}) {
+        @content;
+    }
+}
+
+@mixin min-md {
+    @media (min-width: #{$screen-md}) {
+        @content;
+    }
+}
+
+@mixin max-lg {
+    @media (max-width: #{$screen-lg - 1px}) {
+        @content;
+    }
+}
+
+@mixin min-lg {
+    @media (min-width: #{$screen-lg}) {
+        @content;
+    }
+}
+
+@mixin max-ml {
+    @media (max-width: #{$screen-ml - 1px}) {
+        @content;
+    }
+}
+
+@mixin min-ml {
+    @media (min-width: #{$screen-ml}) {
+        @content;
+    }
+}
+
+@mixin max-xl {
+    @media (max-width: #{$screen-xl - 1px}) {
+        @content;
+    }
+}
+
+@mixin min-xl {
+    @media (min-width: #{$screen-xl}) {
+        @content;
+    }
+}
+
+@mixin max-xxl {
+    @media (max-width: #{$screen-xxl - 1px}) {
+        @content;
+    }
+}
+
+@mixin min-xxl {
+    @media (min-width: #{$screen-xxl}) {
+        @content;
+    }
+}
+
+@mixin max-xxxl {
+    @media (max-width: #{$screen-xxxl - 1px}) {
+        @content;
+    }
+}
+
+@mixin min-xxxl {
+    @media (min-width: #{$screen-xxxl}) {
+        @content;
+    }
+}
+
+@mixin md-to-lg {
+    @media (min-width: #{$screen-md}) and (max-width: #{$screen-lg}) {
+        @content;
+    }
+}
+
+@mixin md-to-ml {
+    @media (min-width: #{$screen-md}) and (max-width: #{$screen-ml}) {
+        @content;
+    }
+}
+
+@mixin lg-to-ml {
+    @media (min-width: #{$screen-lg}) and (max-width: #{$screen-ml}) {
+        @content;
+    }
+}
+
+@mixin min-size($size) {
+    @media (min-width: #{$size}) {
+        @content;
+    }
+}
+
+@mixin max-size($size) {
+    @media (max-width: #{$size}) {
+        @content;
+    }
+}
+
+// Hidden text with ellipsis by line number
+@mixin ellipsis($line) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+}

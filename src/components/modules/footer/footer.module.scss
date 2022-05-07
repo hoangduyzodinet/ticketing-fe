@@ -1,0 +1,80 @@
+@import "@styles/_variables";
+
+.footerWrapper {
+    background-color: $neutral-2;
+
+    .footerTitle {
+        font-size: rem(16) !important;
+        margin-top: rem(30);
+    }
+
+    .footerDescription {
+        font-size: rem(14) !important;
+        display: block;
+        margin-top: 0.5rem;
+
+        span {
+            margin-right: 5px;
+        }
+
+        &:hover {
+            cursor: pointer;
+            opacity: 0.8;
+        }
+    }
+
+    .footerHotline {
+        color: $primary;
+
+        &:hover {
+            cursor: pointer;
+            opacity: 0.8;
+        }
+    }
+
+    .footerEmail {
+        padding: 10px 10px;
+        border: none;
+
+        input {
+            padding: 0 10px !important;
+        }
+    }
+
+    .footerPlatform {
+        display: flex;
+        align-items: center;
+        font-size: rem(12);
+        margin-right: rem(10);
+        padding: rem(20) rem(10);
+        background-color: transparent;
+        border: 1px solid $neutral-black-2;
+        color: $neutral-body;
+    }
+
+    .footerSocial {
+        width: rem(40);
+        height: rem(40);
+        border-radius: 50%;
+        border: 1px solid $neutral-black-2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: rem(20);
+        color: $neutral-body;
+        margin-right: rem(10);
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    } 
+
+    .footerLanguage {
+        width: rem(38);
+        height: rem(26);
+        border-radius: 1px;
+        margin-right: rem(10);
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "language": {
+        "title": "Ngôn ngữ",
+        "vi": "Tiếng Việt",
+        "en": "Tiếng Anh"
+    },
+    "header": {
+        "login": "Đăng nhập/Đăng ký",
+        "create_event": "Tạo sự kiện",
+        "manager_user": "Quản lý người dùng",
+        "profile": "Cá nhân",
+        "logout": "Đăng xuất",
+        "search_placeholder": "Nhập để tìm kiếm"
+    },
+    "footer": {
+        "hotline": "Hotline",
+        "time_work": "Hồ Chí Minh: Thứ 2 - Thứ 6 (8:30 - 18:30)",
+        "hotline_number": "1900.9999",
+        "support_mail": "Email hỗ trợ",
+        "mail": "support@ticketing.com",
+        "help": "Chúng tôi giúp gì được cho bạn?",
+        "help_sub": "Dễ dàng - Tiện lợi - Bảo mật cao",
+        "customer_care": "Trung tâm hỗ trợ và chăm sóc khách hàng",
+        "address": "17A Cộng Hoà, Phường 4, Quận Tân Bình, TP. Hồ Chí Minh",
+        "booking_instruction": "Hướng dẫn mua vé",
+        "booking_instruction_note": "Chỉ với vài thao tác đơn giản",
+        "our_company": "Về công ty chúng tôi",
+        "about_us": "Thông tin về Ticketing",
+        "landscape": "Event Landscape Booklet",
+        "hiring": "Thông tin tuyển dụng",
+        "ecom": "Quy chế hoạt động sàn chứng khoán",
+        "policy": "Cơ chế giải quyết tranh chấp/khiếu nại",
+        "faq": "FAQ",
+        "faq_sub": "Câu hỏi thường gặp",
+        "subscribe": "Đăng ký nhận mail",
+        "your_mail": "Email của bạn",
+        "app": "Ứng dụng Ticketing",
+        "available": "AVAILABLE ON",
+        "appstore": "App store",
+        "available_app": "AVAILABLE APP ON",
+        "google_play": "Google play",
+        "app_checkin": "Ứng dụng Check-in",
+        "desktop": "DESKTOP APP",
+        "multi_platform": "Multi platform",
+        "mobile": "MOBILE APP",
+        "mobile_sub": "Android and iOS",
+        "follow_us": "Follow us"
+    }
+}

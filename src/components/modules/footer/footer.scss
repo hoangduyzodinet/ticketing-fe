@@ -1,0 +1,122 @@
+@import './../utils/variable';
+
+.footer {
+  background: $color-primary;
+
+  &__content {
+    &__title {
+      color: $color-text !important;
+      font-size: 1.4rem !important;
+      font-weight: bold !important;
+      margin-top: 3rem;
+    }
+
+    &__description {
+      color: $color-text-sub;
+      font-size: 1.4rem !important;
+      display: block;
+      margin-top: 0.5rem;
+
+      span {
+        margin-right: 5px;
+      }
+    }
+
+    &__hotline {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: $color-text !important;
+    }
+
+    &__item_mail {
+      padding: 10px 10px;
+      background-color: $color-primary-light-1;
+      border: none;
+
+      input {
+        color: $color-text;
+        background-color: $color-primary-light-1;
+        padding: 0 10px !important;
+      }
+
+      span {
+        color: $color-text;
+      }
+    }
+
+    &__description:hover,
+    &__hotline:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    &__item_mail:focus,
+    &__item_mail:hover {
+      border: none;
+    }
+  }
+  &__content,
+  .contact {
+    &__list {
+      display: flex;
+      align-items: center;
+
+      .footer__content__item {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid $color-text-sub;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        color: $color-text;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .footer__content__item:hover {
+        opacity: 0.8;
+      }
+
+      .footer__content__item__platform {
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        margin-right: 10px;
+        padding: 20px 10px;
+        background-color: transparent;
+        border: 2px solid $color-text-sub;
+        color: $color-text;
+
+        .anticon {
+          font-size: 2rem;
+        }
+
+        &__item {
+          text-align: start;
+
+          span {
+            color: $color-text;
+          }
+        }
+      }
+
+      .footer__content__item__platform:hover {
+        opacity: 0.8;
+      }
+
+      .footer__content__item-img {
+        width: 38px;
+        height: 26px;
+        border-radius: 1px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .ant-divider {
+    border-top: 1px solid #aaa;
+  }
+}

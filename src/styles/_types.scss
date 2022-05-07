@@ -1,0 +1,175 @@
+@import "./variables";
+@import "./mixins";
+
+//
+// Titles
+//
+$title-20-font-size: rem(20);
+$title-18-font-size: rem(18);
+
+$title-20-line-height: rem(30);
+$title-18-line-height: rem(28);
+
+.title-20-bold {
+    font-family: $font-koho;
+    font-weight: 700;
+    font-size: $title-20-font-size;
+    line-height: $title-20-line-height;
+}
+
+.title-20-medium {
+    font-family: $font-koho;
+    font-weight: 500;
+    font-size: $title-20-font-size;
+    line-height: $title-20-line-height;
+}
+
+.title-18-bold {
+    font-family: $font-koho;
+    font-weight: 700;
+    font-size: $title-18-font-size;
+    line-height: $title-18-line-height;
+}
+
+.title-18-semi-bold {
+    font-family: $font-koho;
+    font-weight: 700;
+    font-size: $title-18-font-size;
+    line-height: $title-18-line-height;
+}
+
+.title-18-medium {
+    font-family: $font-koho;
+    font-weight: 500;
+    font-size: $title-18-font-size;
+    line-height: $title-18-line-height;
+}
+
+.title-18-regular {
+    font-family: $font-koho;
+    font-weight: 400;
+    font-size: $title-18-font-size;
+    line-height: $title-18-line-height;
+}
+
+//
+// Body
+//
+$body-16-font-size: rem(16);
+$body-14-font-size: rem(14);
+
+$body-16-line-height: rem(24);
+$body-14-line-height: rem(22);
+
+.body-16-semi-bold {
+    font-family: $font-koho;
+    font-weight: bold;
+    font-size: $body-16-font-size;
+    line-height: $body-16-line-height;
+}
+
+.body-16-semi-bold-underline {
+    font-family: $font-koho;
+    font-weight: bold;
+    font-size: $body-16-font-size;
+    line-height: $body-16-line-height;
+    text-decoration-line: underline;
+}
+
+.body-16-regular {
+    font-family: $font-koho;
+    font-size: $body-16-font-size;
+    line-height: $body-16-line-height;
+}
+
+.body-16-regular-underline {
+    font-family: $font-koho;
+    font-size: $body-16-font-size;
+    line-height: $body-16-line-height;
+    text-decoration-line: underline;
+}
+
+.body-14-semi-bold {
+    font-family: $font-koho;
+    font-weight: bold;
+    font-size: $body-14-font-size;
+    line-height: $body-14-line-height;
+}
+
+.body-14-semi-bold-underline {
+    font-family: $font-koho;
+    font-weight: bold;
+    font-size: $body-14-font-size;
+    line-height: $body-14-line-height;
+    text-decoration-line: underline;
+}
+
+.body-14-regular {
+    font-family: $font-koho;
+    font-size: $body-14-font-size;
+    line-height: $body-14-line-height;
+}
+
+.body-14-regular-underline {
+    font-family: $font-koho;
+    font-size: $body-14-font-size;
+    line-height: $body-14-line-height;
+    text-decoration-line: underline;
+}
+
+//
+// Captions
+//
+$caption-12-font-size: rem(12);
+
+$caption-12-line-height: rem(18);
+
+.caption-12-semi-bold {
+    font-family: $font-koho;
+    font-weight: 700;
+    font-size: $caption-12-font-size;
+    line-height: $caption-12-line-height;
+}
+
+.caption-12-semi-bold-underline {
+    font-family: $font-koho;
+    font-weight: 700;
+    font-size: $caption-12-font-size;
+    line-height: $caption-12-line-height;
+    text-decoration-line: underline;
+}
+
+.caption-12-regular {
+    font-family: $font-koho;
+    font-size: $caption-12-font-size;
+    line-height: $caption-12-line-height;
+}
+
+.caption-12-regular-underline {
+    font-family: $font-koho;
+    font-size: $caption-12-font-size;
+    line-height: $caption-12-line-height;
+    text-decoration-line: underline;
+}
+
+// color status
+
+.status-completed {
+    background-color: $status-successful-2;
+    color: $neutral-1;
+}
+
+.status-failed {
+    background-color: $status-error-2;
+    color: $neutral-1;
+}
+
+.status-pending {
+    background-color: $status-warning-2;
+    color: $neutral-1;
+}
+
+.status-rejected {
+    background-color: $neutral-4;
+    color: $neutral-black-2;
+}
