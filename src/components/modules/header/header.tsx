@@ -55,7 +55,7 @@ export default function Header() {
     };
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
+        localStorage.removeItem("access_token");
         dispatch(logout());
         router.push("/");
     };
@@ -65,36 +65,34 @@ export default function Header() {
             {user.role === "admin" && (
                 <Row>
                     <Col
-                        className="btn--popover header__label"
+                        className="cursor-pointer text-base flex items-center"
                         onClick={() => {
                             router.push("/admin");
                         }}
                     >
                         <ProfileOutlined />
-                        <span className="ml-10 ">
-                            {t("header.manager_user")}
-                        </span>
+                        <span className="ml-4">{t("header.manager_user")}</span>
                     </Col>
                 </Row>
             )}
-            <Row className="mt-10">
+            <Row className="mt-4">
                 <Col
-                    className="btn--popover header__label"
+                    className="cursor-pointer text-base flex items-center"
                     onClick={() => {
                         router.push("/user/profile");
                     }}
                 >
                     <EditOutlined />
-                    <span className="ml-10 ">{t("header.profile")}</span>
+                    <span className="ml-4">{t("header.profile")}</span>
                 </Col>
             </Row>
-            <Row className="mt-10">
+            <Row className="mt-4">
                 <Col
                     onClick={handleLogout}
-                    className="btn--popover header__label"
+                    className="cursor-pointer text-base flex items-center"
                 >
                     <LogoutOutlined />
-                    <span className="ml-10 ">{t("header.logout")}</span>
+                    <span className="ml-4">{t("header.logout")}</span>
                 </Col>
             </Row>
         </>
@@ -107,11 +105,14 @@ export default function Header() {
                     placement="bottomLeft"
                     content={contentPophoverUser}
                     trigger="hover"
-                    className="header__user"
                     key="4"
                 >
-                    <Avatar icon={<UserOutlined />} />
-                    <span>{user.name}</span>
+                    <div className="flex items-center justify-between">
+                        <Avatar>{user.name.charAt(0).toUpperCase()}</Avatar>
+                        <span className={`${s.userName} ml-2`}>
+                            {user.name}
+                        </span>
+                    </div>
                 </Popover>
             </>
         ) : (

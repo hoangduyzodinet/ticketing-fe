@@ -40,8 +40,8 @@ export default function Footer() {
 
     return (
         <Footer className={s.footerWrapper}>
-            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                <Col md={24} lg={8} xl={6}>
+            <Row gutter={[16, 16]}>
+                <Col sm={24} md={12} lg={8} xl={6}>
                     <div>
                         <Title level={3} className={s.footerTitle}>
                             {t("footer.hotline")}
@@ -65,7 +65,7 @@ export default function Footer() {
                         </Text>
                     </div>
                 </Col>
-                <Col md={24} lg={8} xl={6}>
+                <Col sm={24} md={12} lg={8} xl={6}>
                     <div>
                         <Title level={3} className={s.footerTitle}>
                             {t("footer.help")}
@@ -85,7 +85,7 @@ export default function Footer() {
                         </Text>
                     </div>
                 </Col>
-                <Col md={24} lg={8} xl={6}>
+                <Col sm={24} md={12} lg={8} xl={6}>
                     <div>
                         <Title level={3} className={s.footerTitle}>
                             {t("footer.booking_instruction")}
@@ -116,7 +116,7 @@ export default function Footer() {
                         </Text>
                     </div>
                 </Col>
-                <Col md={24} lg={8} xl={6}>
+                <Col sm={24} md={12} lg={8} xl={6}>
                     <div>
                         <Title level={3} className={s.footerTitle}>
                             {t("footer.faq")}
@@ -142,7 +142,7 @@ export default function Footer() {
             <Divider />
 
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                <Col md={24} lg={8} xl={6}>
+                <Col sm={24} md={12} lg={8} xl={6}>
                     <div>
                         <Title level={3} className={s.footerTitle}>
                             {t("footer.app")}
@@ -173,7 +173,7 @@ export default function Footer() {
                         </div>
                     </div>
                 </Col>
-                <Col md={24} lg={8} xl={6}>
+                <Col sm={24} md={12} lg={8} xl={6}>
                     <div>
                         <Title level={3} className={s.footerTitle}>
                             {t("footer.app_checkin")}
@@ -202,7 +202,7 @@ export default function Footer() {
                         </div>
                     </div>
                 </Col>
-                <Col md={24} lg={8} xl={6}>
+                <Col sm={24} md={12} lg={8} xl={6}>
                     <div>
                         <Title level={3} className={s.footerTitle}>
                             {t("footer.follow_us")}
@@ -226,7 +226,7 @@ export default function Footer() {
                         </div>
                     </div>
                 </Col>
-                <Col md={24} lg={8} xl={6}>
+                <Col sm={24} md={12} lg={8} xl={6}>
                     <div>
                         <Title level={3} className={s.footerTitle}>
                             {t("language.title")}

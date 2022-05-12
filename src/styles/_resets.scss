@@ -16,6 +16,15 @@ input[type="number"] {
 
 .ant-layout,
 .ant-layout-footer,
-.ant-layout-header {
+.ant-layout-header,
+.ant-layout-sider {
     background-color: $neutral-1;
 }
+
+.ant-input-affix-wrapper:hover,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused  {
+    border-color: $primary;
+    box-shadow: none;
+}
+

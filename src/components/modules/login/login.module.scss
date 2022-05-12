@@ -1,0 +1,92 @@
+@import "@styles/_variables";
+
+.loginWrapper {
+    height: 100vh;
+
+    .backgroundImg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url(/images/bg.jpeg);
+        z-index: -1;
+        pointer-events: none;
+        filter: brightness(50%);
+    }
+
+    .formWrapper {
+        background-color: rgba(0, 0, 0, .6);
+        margin: rem(50) auto 0 auto;
+        border-radius: rem(10);
+        padding: rem(40) rem(60);
+        width: rem(450);
+        box-shadow: 0 rem(10) rem(20) rgba(0, 0, 0, 0.15);
+        color: $neutral-1;
+    }
+
+    .logo {
+        position: absolute;
+        top: rem(20);
+        left: rem(20);
+
+        span {
+            color: $primary;
+            font-size: 40px;
+            font-weight: 900;
+        }
+    }
+
+    .loginTitle {
+        color: $neutral-1;
+        font-size: 32px;
+        font-weight: 900;
+    }
+
+    .formItem {
+        width: 100%;
+    }
+
+    .formBtn,
+    .formBtnFb {
+        width: 100%;
+        background-color: $primary;
+        color: $neutral-1;
+        border: none;
+        font-weight: 500;
+    }
+
+    .formBtnFb {
+        background-color: $status-information-2;
+        height: rem(40);
+        border-radius: rem(2);
+
+        i {
+            margin-right: rem(10);
+        }
+    }
+
+    .divider {
+        color: $neutral-1;
+        border-top-color: $neutral-1;
+    }
+
+    .formRedirect {
+        color: $neutral-black-2;
+        text-align: center;
+
+        & > a {
+            color: $neutral-1;
+
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+
+    :global {
+        .ant-row {
+            height: 100%;
+        }
+    }
+}

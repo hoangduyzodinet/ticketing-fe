@@ -5,6 +5,7 @@ import { NextPageWithLayout } from "../src/interfaces";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import nextI18NextConfig from "@i18n";
 import * as api from "./../src/services";
+import { HomePageTemplate } from "../src/templates/home/home.template";
 
 const Home: NextPageWithLayout = () => {
     // const [categories, setCategories] = useState<ICategory[]>([]);
@@ -19,7 +20,7 @@ const Home: NextPageWithLayout = () => {
     //     // eslint-disable-next-line react-hooks/exhaustive-deps
     // }, []);
 
-    return <>hello</>;
+    return <HomePageTemplate />;
 };
 
 export const getServerSideProps: GetServerSideProps = async ({

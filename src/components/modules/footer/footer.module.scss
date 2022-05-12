@@ -77,4 +77,10 @@
         margin-right: rem(10);
         cursor: pointer;
     }
+
+    :global {
+        .anticon {
+            font-size: 16px;
+        }
+    }
 }

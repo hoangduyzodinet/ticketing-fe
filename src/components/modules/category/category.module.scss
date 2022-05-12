@@ -1,0 +1,36 @@
+@import "@styles/_variables";
+
+.categoryWrapper {
+    .menuItem {
+        &:hover {
+            color: $primary;
+        }
+    }
+
+    :global {
+
+        .ant-menu-light .ant-menu-item:hover,
+        .ant-menu-light .ant-menu-item-active,
+        .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+        .ant-menu-light .ant-menu-submenu-active,
+        .ant-menu-light .ant-menu-submenu-title:hover,
+        .ant-menu-item a:hover,
+        .ant-menu-item-selected a,
+        .ant-menu-item-selected a:hover,
+        .ant-menu-item-selected,
+        .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-expand-icon, .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow {
+            color: $primary;
+        }
+
+        .ant-menu-vertical .ant-menu-item::after,
+        .ant-menu-vertical-left .ant-menu-item::after,
+        .ant-menu-vertical-right .ant-menu-item::after,
+        .ant-menu-inline .ant-menu-item::after {
+            border-right: 3px solid $primary;
+        }
+
+        .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+            background-color: $primary-2;
+        }
+    }
+}
