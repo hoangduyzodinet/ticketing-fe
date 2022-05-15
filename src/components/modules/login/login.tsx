@@ -32,7 +32,7 @@ const Login: React.FC = () => {
         try {
             const result = await authApi.login(values);
             if (result) {
-                localStorage.setItem("token", result.accessToken);
+                localStorage.setItem("access_token", result.accessToken);
                 dispatch(login(result.payload));
                 setAlertMessage({
                     message: "Sign In Successfully!",
@@ -54,7 +54,7 @@ const Login: React.FC = () => {
                 response.accessToken,
             );
             if (result) {
-                localStorage.setItem("token", result.accessToken);
+                localStorage.setItem("access_token", result.accessToken);
                 dispatch(login(result.payload));
                 setAlertMessage({
                     message: "SignIn Successfully!",

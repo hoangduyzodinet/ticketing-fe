@@ -1,0 +1,32 @@
+@import "@styles/_variables";
+
+.createBank {
+    .btnPrimary, .btnPrimaryCancel {
+        background-color: $primary;
+        border: none;
+        color: $neutral-1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btnPrimaryCancel {
+        background-color: $status-error-2;
+    }
+
+    .title {
+        font-size: 20px;
+        color: $primary;
+    }
+
+    :global {
+        .ant-form-item-label {
+            text-align: left;
+        }
+        .ant-modal-footer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+    }
+}

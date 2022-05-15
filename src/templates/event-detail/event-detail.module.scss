@@ -1,0 +1,43 @@
+@import "@styles/_variables";
+
+.eventDetailWrapper {
+    margin: rem(24) auto;
+
+    .eventImg {
+        height: rem(360);
+        display: inline;
+        object-fit: cover;
+    }
+
+    .eventInfo {
+        padding: rem(0) rem(20);
+    }
+
+    .eventName {
+        font-size: rem(32);
+        text-transform: uppercase;
+        color: $neutral-black-100;
+        font-weight: bold;
+    }
+
+    .primaryBtn {
+        background-color: $primary;
+        color: $neutral-1;
+        border: none;
+    }
+
+    .eventDetailImg {
+        object-fit: cover;
+    }
+
+    :global {
+        .ant-image {
+            width: 100%;
+        }
+
+        .ant-tabs-tab-btn > span{
+            display: flex;
+            align-items: center;
+        }
+    }
+}

@@ -1,5 +1,4 @@
 import React, { ReactNode, useLayoutEffect } from "react";
-import { IPayload } from "../interfaces/common/jwt-payload.interface";
 import { useAppDispatch } from "../redux/hooks";
 import { login } from "../redux/user/userSlice";
 import { UserApi } from "../services";

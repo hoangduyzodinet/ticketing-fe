@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Avatar,
     Button,
@@ -19,13 +19,19 @@ import {
     LogoutOutlined,
     ProfileOutlined,
     SearchOutlined,
-    UserOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import { logout, selectorUser } from "../../../redux/user/userSlice";
+import {
+    logout,
+    selectorUser,
+    updateIsBank,
+} from "../../../redux/user/userSlice";
 import s from "./header.module.scss";
 import { useTranslation } from "next-i18next";
+import { UserApi } from "../../../services";
+
+const userApi = new UserApi();
 
 export default function Header() {
     const { t }: { t: any } = useTranslation("common");
@@ -34,16 +40,25 @@ export default function Header() {
     const router = useRouter();
     const user = useAppSelector(selectorUser);
     const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        const getBank = async (id: string) => {
+            try {
+                const result = await userApi.findBankByUserId(id);
+                dispatch(updateIsBank({ isBankAccount: !!result }));
+            } catch (error) {
+                dispatch(updateIsBank({ isBankAccount: false }));
+            }
+        };
+        getBank(user.id);
+    }, []);
+
     const loginHandler = () => {
         router.push("/login");
     };
 
     const changeLang = (lang: string) => {
         router.push("#", "#", { locale: lang });
-    };
-
-    const registerHandler = () => {
-        router.push("/signup");
     };
 
     const createEventHandler = () => {

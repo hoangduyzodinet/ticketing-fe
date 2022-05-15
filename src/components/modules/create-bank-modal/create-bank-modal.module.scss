@@ -1,0 +1,28 @@
+@import "@styles/_variables";
+
+.createBankModal {
+    .btnPrimary, .btnPrimaryCancel {
+        background-color: $primary;
+        border: none;
+        color: $neutral-1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btnPrimaryCancel {
+        background-color: $status-error-2;
+    }
+
+    .content {
+        font-size: 16px;
+    }
+
+    :global {
+        .ant-modal-footer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+    }
+}

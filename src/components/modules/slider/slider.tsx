@@ -30,7 +30,7 @@ const urls = [
 export const SliderShow: React.FC = () => {
     const settings = {
         dots: true,
-        infinite: false,
+        infinite: true,
         arrows: false,
         autoplay: true,
         speed: 500,

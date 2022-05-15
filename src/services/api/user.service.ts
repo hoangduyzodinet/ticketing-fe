@@ -22,7 +22,7 @@ export class UserApi extends baseApi {
         return null;
     }
 
-    public async getUser(): Promise<IPayload | null> {
+    public async getUser(): Promise<IUserProfile | null> {
         const result = await this.get<any>("/users/profile");
         if (result && result.data) {
             return result.data;

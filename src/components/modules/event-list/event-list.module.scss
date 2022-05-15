@@ -1,0 +1,21 @@
+@import "@styles/_variables";
+
+.eventListWrapper {
+    margin-top: rem(50);
+
+    .title {
+        margin: 0 rem(20);
+        color: $primary;
+    }
+
+    .divider {
+        margin: 0;
+        border-top: 2px solid rgba(0, 0, 0, 0.5);
+    }
+
+    .seemoreBtn {
+        background-color: $primary;
+        color: $neutral-1;
+        border: none;
+    }
+}

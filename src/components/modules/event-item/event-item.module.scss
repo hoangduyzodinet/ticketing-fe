@@ -1,0 +1,30 @@
+@import "@styles/_variables";
+
+.eventItemWrapper {
+    cursor: pointer;
+
+    .eventItemCard {
+        width: 100%;
+        background-color: $neutral-2;
+        border: none;
+    }
+
+    .eventItemImg {
+        width: 100%;
+        height: rem(200);
+        object-fit: cover;
+    }
+
+    .eventName {
+        color: $neutral-black-100;
+        text-transform: uppercase;
+        font-weight: bold;
+        @include ellipsis(1);
+    }
+
+    :global {
+        .ant-card-body {
+            padding: rem(10);
+        }
+    }
+}

@@ -6,10 +6,19 @@ export default class BaseApi {
     private httpClient: AxiosInstance;
 
     constructor() {
+        let token = "";
+        if (typeof window !== "undefined") {
+            token = localStorage.getItem("access_token") ?? "";
+        } else {
+            console.log("we are running on the server");
+        }
         this.httpClient = axios.create({
             baseURL: process.env.NEXT_PUBLIC_API_URL || "",
             withCredentials: false,
             timeout: 60 * 1000,
+            headers: {
+                Authorization: `Bearer  ${token}`,
+            },
         });
     }
 

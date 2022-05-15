@@ -1,13 +1,10 @@
-import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import React from "react";
-import { MainLayout } from "../src/components/layouts/main";
-import { NextPageWithLayout } from "../src/interfaces";
+import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import CreateBank from "../../../src/components/modules/create-bank/create-bank";
 import nextI18NextConfig from "@i18n";
-import { HomePageTemplate } from "../src/templates/home/home.template";
 
-const Home: NextPageWithLayout = () => {
-    return <HomePageTemplate />;
+const CreateBankPage: NextPage = () => {
+    return <CreateBank />;
 };
 
 export const getServerSideProps: GetServerSideProps = async ({
@@ -24,6 +21,4 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
 };
 
-Home.Layout = MainLayout;
-
-export default Home;
+export default CreateBankPage;

@@ -1,13 +1,12 @@
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
-import React from "react";
-import { MainLayout } from "../src/components/layouts/main";
-import { NextPageWithLayout } from "../src/interfaces";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { MainLayout } from "../../../src/components";
+import { NextPageWithLayout } from "../../../src/interfaces";
+import EventDetailTemplate from "../../../src/templates/event-detail/event-detail.template";
 import nextI18NextConfig from "@i18n";
-import { HomePageTemplate } from "../src/templates/home/home.template";
 
-const Home: NextPageWithLayout = () => {
-    return <HomePageTemplate />;
+const EventDetailPage: NextPageWithLayout = () => {
+    return <EventDetailTemplate />;
 };
 
 export const getServerSideProps: GetServerSideProps = async ({
@@ -24,6 +23,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
 };
 
-Home.Layout = MainLayout;
+EventDetailPage.Layout = MainLayout;
 
-export default Home;
+export default EventDetailPage;
