@@ -31,7 +31,7 @@ const Category: React.FC = ({ children }: LayoutProps) => {
     }, []);
 
     const handleClickMenuItem = (e: any) => {
-        router.push(`/events/categories/${e.key}`);
+        router.push(`/category/${e.key}`);
     };
 
     return (

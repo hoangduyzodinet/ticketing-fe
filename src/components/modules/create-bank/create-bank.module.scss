@@ -18,15 +18,4 @@
         font-size: 20px;
         color: $primary;
     }
-
-    :global {
-        .ant-form-item-label {
-            text-align: left;
-        }
-        .ant-modal-footer {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-        }
-    }
 }

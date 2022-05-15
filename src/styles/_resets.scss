@@ -23,8 +23,73 @@ input[type="number"] {
 
 .ant-input-affix-wrapper:hover,
 .ant-input-affix-wrapper:focus,
-.ant-input-affix-wrapper-focused  {
+.ant-input-affix-wrapper-focused {
     border-color: $primary;
     box-shadow: none;
 }
 
+.ant-pagination-item-active,
+.ant-pagination-item:hover {
+    border-color: $primary;
+
+    &>a {
+        color: $primary  !important;
+    }
+}
+
+.ant-pagination-item-link-icon {
+    color: $primary  !important;
+}
+
+.ant-pagination-prev:hover .ant-pagination-item-link,
+.ant-pagination-next:hover .ant-pagination-item-link {
+    color: $primary;
+    border-color: $primary;
+}
+
+.ant-pagination-disabled .ant-pagination-item-link,
+.ant-pagination-disabled:hover .ant-pagination-item-link {
+    color: rgba(0, 0, 0, 0.25);
+    border-color: #d9d9d9;
+    cursor: not-allowed;
+}
+
+.ant-form-item-label {
+    text-align: left;
+}
+
+.ant-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.ant-tabs-tab-btn > span{
+    display: flex;
+    align-items: center;
+}
+
+.ant-tabs-tab {
+    &:hover {
+        color: $primary !important;
+    }
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: $primary !important; 
+    font-weight: 500;
+}
+
+.ant-tabs-ink-bar {
+    position: absolute;
+    background: $primary;
+    pointer-events: none;
+}
+
+.ant-space-item > a:hover {
+    color: $primary;
+}
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+    border-color: $primary;
+}

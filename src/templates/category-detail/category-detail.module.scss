@@ -1,0 +1,11 @@
+@import "@styles/_variables";
+
+.categoryDetail {
+    margin-top: rem(50);
+
+    .pagination {
+        margin: rem(50) auto;
+        width: 100%;
+        text-align: center;
+    }
+}

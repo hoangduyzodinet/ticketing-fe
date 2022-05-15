@@ -16,13 +16,4 @@
         @include ellipsis(1);
         max-width: 70%;
     }
-
-    :global {
-        .ant-input-affix-wrapper:hover,
-        .ant-input-affix-wrapper:focus,
-        .ant-input-affix-wrapper-focused  {
-            border-color: $primary;
-            box-shadow: none;
-        }
-    }
 }

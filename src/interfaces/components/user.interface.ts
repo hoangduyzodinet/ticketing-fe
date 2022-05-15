@@ -4,10 +4,10 @@ export interface IUserInterface {
 }
 
 export interface IUserProfile {
-    id: string;
-    email: string;
-    name: string;
-    role: string;
+    id?: string;
+    email?: string;
+    name?: string;
+    role?: string;
     gender?: string;
     birthday?: moment.Moment | null;
     numberPhone?: string;

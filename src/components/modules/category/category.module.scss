@@ -18,8 +18,9 @@
         .ant-menu-item-selected a,
         .ant-menu-item-selected a:hover,
         .ant-menu-item-selected,
-        .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-expand-icon, .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow {
-            color: $primary;
+        .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-expand-icon, .ant-menu-submenu:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow,
+        .ant-menu-submenu-selected {
+            color: $primary !important;
         }
 
         .ant-menu-vertical .ant-menu-item::after,

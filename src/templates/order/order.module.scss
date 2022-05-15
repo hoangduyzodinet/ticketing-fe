@@ -1,0 +1,17 @@
+@import "@styles/_variables";
+
+.orderTemplate {
+    .title {
+        width: 100%;
+        text-align: center;
+        margin: rem(40);
+        font-size: 32px !important;
+        color: $primary !important;
+    }
+
+    .pagination {
+        margin: rem(80) auto;
+        width: 100%;
+        text-align: center;
+    }
+}

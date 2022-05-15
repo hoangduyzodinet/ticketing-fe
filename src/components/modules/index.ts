@@ -5,3 +5,4 @@ export * from "./slider/slider";
 export * from "./create-bank-modal/create-bank-modal";
 export * from "./event-list/event-list";
 export * from "./event-item/event-item";
+export * from "./event-item/event-item";

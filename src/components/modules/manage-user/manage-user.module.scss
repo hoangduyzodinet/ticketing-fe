@@ -1,0 +1,15 @@
+@import "@styles/_variables";
+
+.header {
+    height: rem(100);
+}
+
+.btnPrimary, .btnCancel {
+    background-color: $primary !important;
+    color: $neutral-1;
+    border: none;
+}
+
+.btnCancel {
+    background-color: $status-error-2 !important;
+}
