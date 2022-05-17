@@ -18,6 +18,7 @@ import {
     Avatar,
     Spin,
     Upload,
+    message,
 } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import moment from "moment";
@@ -25,11 +26,9 @@ import React, { useEffect, useState } from "react";
 import router from "next/router";
 import { useAppSelector } from "../../../redux/hooks";
 import { selectorUser } from "../../../redux/user/userSlice";
-import { TypeAlertEnum } from "../../basics";
 import { ICategory, IEventPayload } from "../../../interfaces";
-import AlertMessage from "../../basics/alert/alert-message";
 import { EventApi, UserApi } from "../../../services";
-import s from "./create-event.module.scss";
+import s from "./event-detail.module.scss";
 
 const validateMessages = {
     required: "${label} is required!",
@@ -84,7 +83,7 @@ const userApi = new UserApi();
 
 const { Step } = Steps;
 
-const CreateEvent: React.FC<IEventDetailProps> = (props) => {
+const EventDetail: React.FC<IEventDetailProps> = (props) => {
     const { Option } = Select;
 
     const [current, setCurrent] = React.useState(0);
@@ -96,10 +95,6 @@ const CreateEvent: React.FC<IEventDetailProps> = (props) => {
     const [formValues, setFormValues] = useState<IFormEventData>(
         {} as IFormEventData,
     );
-    const [alertMessage, setAlertMessage] = useState({
-        message: "",
-        title: TypeAlertEnum.Info,
-    });
     const [isDisplayAlert, setIsDisplayAlert] = useState(false);
     const [categories, setCategories] = useState<ICategory[]>([]);
     const [isUpdate, setIsUpdate] = useState(false);
@@ -110,14 +105,10 @@ const CreateEvent: React.FC<IEventDetailProps> = (props) => {
     const [imageBannerUrl, setImageBannerUrl] = useState("");
     const [imageTicketUrl, setImageTicketUrl] = useState("");
 
-    useEffect(() => {
-        setIsDisplayAlert(alertMessage.message ? true : false);
-    }, [alertMessage]);
-
     //get bank account of user
     useEffect(() => {
         const getBankAccount = async () => {
-            const result: any = await userApi.findBankByUserId(user.id);
+            const result: any = await userApi.findBankByUserId(user?.id || "");
             if (result) {
                 setFormValues({
                     ...formValues,
@@ -171,28 +162,21 @@ const CreateEvent: React.FC<IEventDetailProps> = (props) => {
     ]);
 
     const onFinish = async () => {
-        const payload: IEventPayload = { ...formValues, userId: user.id };
+        const payload: IEventPayload = { ...formValues, userId: user.id || "" };
         if (!isUpdate) {
             try {
                 const result: any = await eventApi.createEvent(payload);
                 if (result) {
-                    setAlertMessage({
-                        message: "Created Event Successfully!",
-                        title: TypeAlertEnum.Success,
-                    });
+                    message.success("Created Event Successfully!");
                     router.push("/events/my-event");
+                } else {
+                    message.error("Created Event failed!");
                 }
             } catch (error: any) {
-                setAlertMessage({
-                    message: error?.errorCode,
-                    title: TypeAlertEnum.Error,
-                });
+                message.error(error);
             }
         } else {
-            setAlertMessage({
-                message: "Feature are development",
-                title: TypeAlertEnum.Info,
-            });
+            message.info("Feature are development!");
         }
     };
 
@@ -792,34 +776,22 @@ const CreateEvent: React.FC<IEventDetailProps> = (props) => {
     ];
 
     return (
-        <Row>
-            <Col offset="16" span="8">
-                {isDisplayAlert && (
-                    <AlertMessage
-                        message={alertMessage.message}
-                        title={alertMessage.title}
-                    />
-                )}
-            </Col>
-            <Col span={24}>
-                <main className={`${s.createEventWrapper} px`}>
-                    <Row align="middle" justify="center">
-                        <Col span={24}>
-                            <h1 className={s.title}>Create Event</h1>
-                        </Col>
-                        <Col xs={{ span: 12 }} lg={{ span: 18 }}>
-                            <Steps current={current} className="mb-6">
-                                {steps.map((item) => (
-                                    <Step key={item.title} title={item.title} />
-                                ))}
-                            </Steps>
-                            <Row>{steps[current].content}</Row>
-                        </Col>
-                    </Row>
-                </main>
-            </Col>
-        </Row>
+        <section className={`${s.createEventWrapper} px`}>
+            <Row align="middle" justify="center">
+                <Col span={24}>
+                    <h1 className={s.title}>Create Event</h1>
+                </Col>
+                <Col xs={{ span: 12 }} lg={{ span: 18 }}>
+                    <Steps current={current} className="mb-6">
+                        {steps.map((item) => (
+                            <Step key={item.title} title={item.title} />
+                        ))}
+                    </Steps>
+                    <Row>{steps[current].content}</Row>
+                </Col>
+            </Row>
+        </section>
     );
 };
 
-export default CreateEvent;
+export default EventDetail;

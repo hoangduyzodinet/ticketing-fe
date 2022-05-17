@@ -9,6 +9,7 @@ import {
     Button,
     Select,
     DatePicker,
+    Skeleton,
 } from "antd";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
@@ -38,13 +39,16 @@ const ManageUser: React.FC = () => {
     const [modalVisibleAddUser, setModalVisibleAddUser] = useState(false);
     const [userEdit, setUserEdit] = useState<IUserProfile>();
     const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const dateFormat = "DD/MM/YYYY";
 
     useEffect(() => {
         const getUsers = async () => {
+            setIsLoading(true);
             const result = await userApi.getAllUser();
             if (result) setUsers(result);
+            setIsLoading(false);
         };
         getUsers();
     }, [callback]);
@@ -388,7 +392,11 @@ const ManageUser: React.FC = () => {
                     </Form.Item>
                 </Form>
             </Modal>
-            <Table columns={columns} dataSource={data} />
+            {isLoading ? (
+                <Skeleton className="mt-10" />
+            ) : (
+                <Table columns={columns} dataSource={data} />
+            )}
         </>
     );
 };

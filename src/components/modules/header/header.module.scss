@@ -16,4 +16,8 @@
         @include ellipsis(1);
         max-width: 70%;
     }
+
+    .headerLogin {
+        display: flex !important;
+    }
 }

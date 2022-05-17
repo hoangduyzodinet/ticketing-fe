@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image, Row, Divider, Button, Typography } from "antd";
+import { Image, Row, Divider, Button, Typography, Skeleton } from "antd";
 
 import { useRouter } from "next/router";
 import { IEPayload } from "../../../interfaces";
@@ -19,6 +19,7 @@ const EventList: React.FC<IEventListProps> = (props) => {
     const router = useRouter();
 
     const [listEvent, setListEvents] = useState<IEPayload[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [optionPaging, setOptionPaging] = useState({
         page: 1,
         limit: 6,
@@ -30,20 +31,24 @@ const EventList: React.FC<IEventListProps> = (props) => {
             pageSize: number,
             id: string,
         ) => {
+            setIsLoading(true);
             const result = await eventApi.getEventPagingByCategory(
                 page,
                 pageSize,
                 id,
             );
             if (result) setListEvents(result.events);
+            setIsLoading(false);
         };
 
         getEventsByCategory(optionPaging.page, optionPaging.limit, props.id);
     }, [optionPaging.limit, optionPaging.page, props.id]);
 
     const onSeeMore = () => {
-        router.push(`events/categories/${props.id}`);
+        router.push(`category/${props.id}`);
     };
+
+    if (isLoading) return <Skeleton className="mt-10" />;
 
     return (
         <div className={s.eventListWrapper}>

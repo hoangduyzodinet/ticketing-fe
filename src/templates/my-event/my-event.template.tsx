@@ -1,43 +1,46 @@
-import { Empty, Pagination, Row, Skeleton } from "antd";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { Divider, Empty, Pagination, Row, Skeleton } from "antd";
+import React, { useEffect, useState } from "react";
 import EvenItem from "../../components/modules/event-item/event-item";
 import { IEPayload } from "../../interfaces";
+import { useAppSelector } from "../../redux/hooks";
+import { selectorUser } from "../../redux/user/userSlice";
 import { EventApi } from "../../services";
-import s from "./category-detail.module.scss";
+import s from "./my-event.module.scss";
 
 const eventApi = new EventApi();
 
-const CategoryDetailTemplate: React.FC = () => {
-    const router = useRouter();
-    const categoryId = router.query.categoryId
-        ? router.query.categoryId.toString()
-        : "";
+const MyEventTemplate: React.FC = () => {
+    const [listEvent, setListEvent] = useState<IEPayload[]>([]);
+    const user = useAppSelector(selectorUser);
+    const [total, setTotal] = useState(0);
     const [optionPaging, setOptionPaging] = useState({
         page: 1,
         limit: 6,
     });
-    const [listEvent, setListEvents] = useState<IEPayload[]>([]);
-    const [total, setTotal] = useState(0);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     useEffect(() => {
-        const getEventsByCategory = async (id: string) => {
+        const getEventPaging = async (
+            page: number,
+            pageSize: number,
+            id: string,
+        ) => {
             setIsLoading(true);
-            const result = await eventApi.getEventPagingByCategory(
-                optionPaging.page,
-                optionPaging.limit,
+            const result = await eventApi.getEventPagingByUserId(
+                page,
+                pageSize,
                 id,
             );
-
             if (result) {
-                setListEvents(result.events);
+                setListEvent(result.events);
                 setTotal(result.total);
             }
             setIsLoading(false);
         };
-        getEventsByCategory(categoryId);
-    }, [optionPaging.limit, optionPaging.page, categoryId]);
+        if (user.id) {
+            getEventPaging(optionPaging.page, optionPaging.limit, user.id);
+        }
+    }, [optionPaging.limit, optionPaging.page, user.id]);
 
     const changePage = (page: number) => {
         setOptionPaging({
@@ -49,13 +52,18 @@ const CategoryDetailTemplate: React.FC = () => {
     if (isLoading) return <Skeleton className="mt-10" />;
 
     return (
-        <article className={s.categoryDetail}>
+        <article className={s.myEvent}>
+            <Divider className={s.title}>My Event</Divider>
             {listEvent.length <= 0 && <Empty />}
             {listEvent.length > 0 && (
-                <div>
-                    <Row gutter={[24, 24]} className="mt-6">
+                <div className="mt-10">
+                    <Row gutter={[24, 24]}>
                         {listEvent.map((event) => (
-                            <EvenItem item={event} key={event.id} />
+                            <EvenItem
+                                item={event}
+                                key={event.id}
+                                isOwner={true}
+                            />
                         ))}
                     </Row>
                 </div>
@@ -65,7 +73,7 @@ const CategoryDetailTemplate: React.FC = () => {
                 <div className={s.pagination}>
                     <Pagination
                         defaultCurrent={1}
-                        total={50}
+                        total={total}
                         current={optionPaging.page}
                         onChange={changePage}
                         pageSize={optionPaging.limit}
@@ -76,4 +84,4 @@ const CategoryDetailTemplate: React.FC = () => {
     );
 };
 
-export default CategoryDetailTemplate;
+export default MyEventTemplate;

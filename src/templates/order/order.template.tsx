@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Empty, Pagination } from "antd";
+import { Empty, Pagination, Skeleton } from "antd";
 import { Typography } from "antd";
 import { StatusEnum } from "../../interfaces";
 import { OrderApi } from "../../services";
@@ -81,6 +81,7 @@ const orders = [
 const OrderTemplate: React.FC = () => {
     const user = useAppSelector(selectorUser);
     const router = useRouter();
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     if (!user.isLoggedIn) {
         router.push("/login");
@@ -96,11 +97,13 @@ const OrderTemplate: React.FC = () => {
 
     useEffect(() => {
         const getEventPaging = async (page: number, limit: number) => {
+            setIsLoading(true);
             const result = await orderApi.getAllOrder(page, limit);
             if (result) {
                 // setOrders(result.orders);
                 setTotal(result.total);
             }
+            setIsLoading(false);
         };
         getEventPaging(optionPaging.page, optionPaging.limit);
     }, [optionPaging.limit, optionPaging.page]);
@@ -112,6 +115,7 @@ const OrderTemplate: React.FC = () => {
         });
     };
 
+    if (isLoading) return <Skeleton className="mt-10" />;
     if (orders.length === 0) return <Empty className="mt-10" />;
     return (
         <article className={s.orderTemplate}>

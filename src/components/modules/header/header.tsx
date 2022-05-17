@@ -50,7 +50,7 @@ export default function Header() {
                 dispatch(updateIsBank({ isBankAccount: false }));
             }
         };
-        getBank(user.id);
+        getBank(user.id || "");
     }, []);
 
     const loginHandler = () => {

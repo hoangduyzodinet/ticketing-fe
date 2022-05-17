@@ -6,6 +6,7 @@ import {
     Divider,
     Form,
     Input,
+    message,
     Row,
     Select,
     Spin,
@@ -16,9 +17,7 @@ import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { UploadOutlined, UserOutlined } from "@ant-design/icons";
 import { IUserProfile } from "../../interfaces";
-import { TypeAlertEnum } from "../../components";
 import { EventApi, UserApi } from "../../services";
-import AlertMessage from "../../components/basics/alert/alert-message";
 import s from "./user-profile.module.scss";
 
 const userApi = new UserApi();
@@ -30,11 +29,6 @@ const UserProfileTemplate: React.FC = () => {
     const { Title } = Typography;
     const [form] = Form.useForm();
 
-    const [alertMessage, setAlertMessage] = useState({
-        message: "",
-        title: TypeAlertEnum.Info,
-    });
-    const [isDisplayAlert, setIsDisplayAlert] = useState(false);
     const [isDisplaySpin, setIsDisplaySpin] = useState(false);
 
     const [imageUrl, setImageUrl] = useState("");
@@ -64,10 +58,6 @@ const UserProfileTemplate: React.FC = () => {
     }, [data, form]);
 
     useEffect(() => {
-        setIsDisplayAlert(alertMessage.message ? true : false);
-    }, [alertMessage]);
-
-    useEffect(() => {
         form.setFields([{ name: "avatar", value: imageUrl }]);
     }, [form, imageUrl]);
 
@@ -85,120 +75,101 @@ const UserProfileTemplate: React.FC = () => {
             const result = await userApi.updateUser(value);
             if (result) {
                 setData(result);
-                setAlertMessage({
-                    message: "Update event Successfully!",
-                    title: TypeAlertEnum.Success,
-                });
+                message.success("Update event Successfully!");
             } else {
-                setAlertMessage({
-                    message: "Update event Failed!",
-                    title: TypeAlertEnum.Error,
-                });
+                message.error("Update event Failed!");
             }
         } catch (error: any) {
-            setAlertMessage({
-                message: error?.errorCode,
-                title: TypeAlertEnum.Error,
-            });
+            message.error(error.message);
         }
     };
 
     return (
-        <Row className={s.profileWrap}>
-            <Col offset="16" span="8">
-                {isDisplayAlert && (
-                    <AlertMessage
-                        message={alertMessage.message}
-                        title={alertMessage.title}
-                    />
-                )}
-            </Col>
-            <Col span={24}>
-                <Row>
-                    <Col span={24}>
-                        <Title className={s.profileHeader} level={2}>
-                            Your Profile
-                        </Title>
-                    </Col>
-                    <Divider />
-                    <Col span={24}>
-                        <Form
-                            labelCol={{ span: 6 }}
-                            wrapperCol={{ span: 18 }}
-                            name="form-profile"
-                            form={form}
-                            onFinish={onFinish}
-                            className={s.formProfile}
-                        >
-                            <Form.Item name="avatar" className="w-full">
-                                <Avatar
-                                    size={128}
-                                    icon={<UserOutlined />}
-                                    src={
-                                        imageUrl
-                                            ? imageUrl
-                                            : "/img/default-image.jpg"
-                                    }
-                                />
-                                <Upload
-                                    action={handleUpload}
-                                    showUploadList={false}
-                                >
-                                    <Button
-                                        icon={<UploadOutlined />}
-                                        className={`${s.btnUpload} flex items-center mt-4`}
-                                    >
-                                        Upload
-                                    </Button>
-                                </Upload>
-                            </Form.Item>
-                            <Form.Item name="name" label="Full Name">
-                                <Input size="large" />
-                            </Form.Item>
-                            <Form.Item name="email" label="Email">
-                                <Input size="large" disabled />
-                            </Form.Item>
-                            <Form.Item name="numberPhone" label="Phone number">
-                                <Input size="large" />
-                            </Form.Item>
-                            <Form.Item
-                                name="birthday"
-                                className="w-full"
-                                label="Birthday"
+        <section className={s.profileWrap}>
+            <Row>
+                <Col span={24}>
+                    <Title className={s.profileHeader} level={2}>
+                        Your Profile
+                    </Title>
+                </Col>
+                <Divider />
+                <Col span={24}>
+                    <Form
+                        labelCol={{ span: 6 }}
+                        wrapperCol={{ span: 18 }}
+                        name="form-profile"
+                        form={form}
+                        onFinish={onFinish}
+                        className={s.formProfile}
+                    >
+                        <Form.Item name="avatar" className="w-full">
+                            <Avatar
+                                size={128}
+                                icon={<UserOutlined />}
+                                src={
+                                    imageUrl
+                                        ? imageUrl
+                                        : "/img/default-image.jpg"
+                                }
+                            />
+                            <Upload
+                                action={handleUpload}
+                                showUploadList={false}
                             >
-                                <DatePicker
-                                    size="large"
-                                    format={dateFormat}
-                                    className="w-full"
-                                />
-                            </Form.Item>
-                            <Form.Item name="gender" label="Gender">
-                                <Select
-                                    placeholder="Select gender"
-                                    allowClear
-                                    size="large"
-                                >
-                                    <Option value="Male">Male</Option>
-                                    <Option value="Female">Female</Option>
-                                    <Option value="Other">Other</Option>
-                                </Select>
-                            </Form.Item>
-
-                            <Row justify="center" className="mt-4">
                                 <Button
-                                    className={s.btnPrimary}
-                                    size="large"
-                                    htmlType="submit"
-                                    disabled={isDisplaySpin}
+                                    icon={<UploadOutlined />}
+                                    className={`${s.btnUpload} flex items-center mt-4`}
                                 >
-                                    Update Profile
+                                    Upload
                                 </Button>
-                            </Row>
-                        </Form>
-                    </Col>
-                </Row>
-            </Col>
-        </Row>
+                            </Upload>
+                        </Form.Item>
+                        <Form.Item name="name" label="Full Name">
+                            <Input size="large" />
+                        </Form.Item>
+                        <Form.Item name="email" label="Email">
+                            <Input size="large" disabled />
+                        </Form.Item>
+                        <Form.Item name="numberPhone" label="Phone number">
+                            <Input size="large" />
+                        </Form.Item>
+                        <Form.Item
+                            name="birthday"
+                            className="w-full"
+                            label="Birthday"
+                        >
+                            <DatePicker
+                                size="large"
+                                format={dateFormat}
+                                className="w-full"
+                            />
+                        </Form.Item>
+                        <Form.Item name="gender" label="Gender">
+                            <Select
+                                placeholder="Select gender"
+                                allowClear
+                                size="large"
+                            >
+                                <Option value="Male">Male</Option>
+                                <Option value="Female">Female</Option>
+                                <Option value="Other">Other</Option>
+                            </Select>
+                        </Form.Item>
+
+                        <Row justify="center" className="mt-4">
+                            <Button
+                                className={s.btnPrimary}
+                                size="large"
+                                htmlType="submit"
+                                disabled={isDisplaySpin}
+                            >
+                                Update Profile
+                            </Button>
+                        </Row>
+                    </Form>
+                </Col>
+            </Row>
+        </section>
     );
 };
 

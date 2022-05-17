@@ -1,12 +1,10 @@
-import { Modal, Button, Form, Input, Row, Col } from "antd";
+import { Modal, Button, Form, Input, message } from "antd";
 import { useRouter } from "next/router";
-import { useLayoutEffect, useState } from "react";
+import { useState } from "react";
 import { IBankPayload } from "../../../interfaces";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { selectorUser, updateIsBank } from "../../../redux/user/userSlice";
 import { UserApi } from "../../../services";
-import { TypeAlertEnum } from "../../basics";
-import AlertMessage from "../../basics/alert/alert-message";
 import s from "./create-bank.module.scss";
 
 const layout = {
@@ -33,15 +31,6 @@ const CreateBank: React.FC = () => {
     const user = useAppSelector(selectorUser);
 
     const [isModalVisible, setIsModalVisible] = useState(true);
-    const [alertMessage, setAlertMessage] = useState({
-        message: "",
-        title: TypeAlertEnum.Info,
-    });
-    const [isDisplayAlert, setIsDisplayAlert] = useState(false);
-
-    useLayoutEffect(() => {
-        setIsDisplayAlert(alertMessage.message ? true : false);
-    }, [alertMessage]);
 
     const handleCancel = () => {
         router.push("/");
@@ -49,93 +38,79 @@ const CreateBank: React.FC = () => {
     };
 
     const onFinish = async (values: IBankPayload) => {
-        const formValue: IBankPayload = { ...values, userId: user.id };
+        const formValue: IBankPayload = { ...values, userId: user?.id || "" };
         try {
             const result = await userApi.createBank(formValue);
             if (result) {
-                setAlertMessage({
-                    message: "Sign In Successfully!",
-                    title: TypeAlertEnum.Success,
-                });
+                message.success("Create bank successfully!");
                 dispatch(updateIsBank({ isBankAccount: !!result }));
                 router.push("/events/create");
+            } else {
+                message.error("Create bank failed!");
             }
         } catch (error: any) {
-            setAlertMessage({
-                message: error?.errorCode,
-                title: TypeAlertEnum.Error,
-            });
+            message.error(error);
         }
     };
 
     return (
-        <Row>
-            <Col offset="16" span="8">
-                {isDisplayAlert && (
-                    <AlertMessage
-                        message={alertMessage.message}
-                        title={alertMessage.title}
-                    />
-                )}
-            </Col>
-            <Col span={24}>
-                <Modal
-                    visible={isModalVisible}
-                    onCancel={handleCancel}
-                    className={s.createBank}
-                    footer={[
-                        <Button
-                            key="back"
-                            size="large"
-                            className={s.btnPrimaryCancel}
-                            onClick={handleCancel}
-                        >
-                            Cancel
-                        </Button>,
-                        <Button
-                            form="form-creat-bank"
-                            htmlType="submit"
-                            key="submit"
-                            size="large"
-                            className={s.btnPrimary}
-                        >
-                            Save
-                        </Button>,
-                    ]}
-                >
-                    <h1 className={`${s.title} mb-8`}>Create Bank Account</h1>
-
-                    <Form
-                        {...layout}
-                        name="form-creat-bank"
-                        onFinish={onFinish}
-                        validateMessages={validateMessages}
+        <section>
+            <Modal
+                visible={isModalVisible}
+                onCancel={handleCancel}
+                className={s.createBank}
+                footer={[
+                    <Button
+                        key="back"
+                        size="large"
+                        className={s.btnPrimaryCancel}
+                        onClick={handleCancel}
                     >
-                        <Form.Item
-                            name="name"
-                            label="Bank name"
-                            rules={[{ required: true }]}
-                        >
-                            <Input />
-                        </Form.Item>
-                        <Form.Item
-                            name="cardHolderName"
-                            label="Card holder name"
-                            rules={[{ required: true }]}
-                        >
-                            <Input />
-                        </Form.Item>
-                        <Form.Item
-                            name="creditNumber"
-                            label="Credit number"
-                            rules={[{ required: true }]}
-                        >
-                            <Input />
-                        </Form.Item>
-                    </Form>
-                </Modal>
-            </Col>
-        </Row>
+                        Cancel
+                    </Button>,
+                    <Button
+                        form="form-creat-bank"
+                        htmlType="submit"
+                        key="submit"
+                        size="large"
+                        className={s.btnPrimary}
+                    >
+                        Save
+                    </Button>,
+                ]}
+            >
+                <h1 className={`${s.title} mb-8`}>Create Bank Account</h1>
+
+                <Form
+                    {...layout}
+                    name="form-creat-bank"
+                    onFinish={onFinish}
+                    validateMessages={validateMessages}
+                >
+                    <Form.Item
+                        name="name"
+                        label="Bank name"
+                        rules={[{ required: true }]}
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        name="cardHolderName"
+                        label="Card holder name"
+                        rules={[{ required: true }]}
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        name="creditNumber"
+                        label="Credit number"
+                        rules={[{ required: true }]}
+                    >
+                        <Input />
+                    </Form.Item>
+                </Form>
+            </Modal>
+        </section>
     );
 };
 
