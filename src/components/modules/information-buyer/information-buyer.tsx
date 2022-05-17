@@ -16,7 +16,7 @@ const InformationBuyer: React.FC<IUserProps> = (props) => {
     };
 
     return (
-        <article>
+        <article className={s.informationBuyer}>
             <Form
                 name="basic"
                 wrapperCol={{ span: 24 }}
